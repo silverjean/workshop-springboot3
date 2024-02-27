@@ -1,8 +1,10 @@
 package com.overtimejs.course.config;
 
+import com.overtimejs.course.entities.Category;
 import com.overtimejs.course.entities.Order;
 import com.overtimejs.course.entities.User;
 import com.overtimejs.course.entities.enums.OrderStatus;
+import com.overtimejs.course.repositories.CategoryRepository;
 import com.overtimejs.course.repositories.OrderRepository;
 import com.overtimejs.course.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class TestConfig implements CommandLineRunner {
     private UserRepository userRepository;
     @Autowired
     private OrderRepository orderRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -35,6 +39,11 @@ public class TestConfig implements CommandLineRunner {
 
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 
+        Category cat1 = new Category(null, "Electronics");
+        Category cat2 = new Category(null, "Books");
+        Category cat3 = new Category(null, "Computers");
+
+        categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
     }
 
 
